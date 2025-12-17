@@ -1,0 +1,21 @@
+{
+  "presets": ["babel-preset-expo"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@app": "./src/app",
+          "@assets": "./src/assets",
+          "@features": "./src/features",
+          "@screens": "./src/screens",
+          "@shared": "./src/shared",
+          "@constants": "./src/shared/constants",
+          "@hooks": "./src/shared/hooks",
+          "@utils": "./src/shared/utils"
+        },
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+      }
+    ]
+  ]
+}
