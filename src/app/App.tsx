@@ -1,10 +1,12 @@
 import { Navigator } from "./navigation";
-import { CustomThemeProvider } from "./providers";
+import { CustomThemeProvider, SafeAreaProvider } from "./providers";
 
 export default function App() {
   return (
-    <CustomThemeProvider>
-      <Navigator />
-    </CustomThemeProvider>
+    <SafeAreaProvider>
+      <CustomThemeProvider>
+        <Navigator />
+      </CustomThemeProvider>
+    </SafeAreaProvider>
   );
 }
