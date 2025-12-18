@@ -4,6 +4,7 @@ export const Colors = {
     primary_blue: "#ADCCF3",
     muted_foreground: "#BECCD4A8",
     foreground: "#101010",
+    section: "#F5FAFE",
     muted: "#474B51",
     background: "#FFFFFF",
     borderAddress: "#F1F5F7",
@@ -12,7 +13,7 @@ export const Colors = {
   dark: {
     blur: "#FFFFFF66",
     primary_blue: "#ADCCF3",
-
+    section: "#F5FAFE",
     borderAddress: "#F1F5F7",
     muted_foreground: "#BECCD4A8",
     foreground: "#101010",
