@@ -10,13 +10,14 @@ import WalletIcon from "@/assets/icons/WalletIcon";
 import { useThemeColors } from "@/shared/hooks";
 import { PressableCustom, ThemedText } from "@/shared/ui";
 import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
+import MenuIcon from "@/assets/icons/MenuIcon";
 
 interface TransactionProps {
   title?: string;
   subtitle?: string | null;
   amount?: string | number;
   currency?: string;
-  onPress?: () => void;
+  showArrow?: boolean;
 }
 
 export const Transaction: React.FC<TransactionProps> = React.memo(
@@ -25,7 +26,7 @@ export const Transaction: React.FC<TransactionProps> = React.memo(
     subtitle,
     amount = "532.00",
     currency = "USDT",
-    onPress,
+    showArrow = false,
   }) => {
     const colors = useThemeColors();
     const progress = useSharedValue(subtitle ? 1 : 0);
@@ -102,11 +103,9 @@ export const Transaction: React.FC<TransactionProps> = React.memo(
           >
             {currency}
           </ThemedText>
-          <PressableCustom onPress={onPress}>
-            <View style={styles.iconBtn}>
-              <ArrowDownIcon />
-            </View>
-          </PressableCustom>
+          <View style={styles.iconBtn}>
+            {showArrow ? <ArrowDownIcon /> : <MenuIcon />}
+          </View>
         </View>
       </View>
     );

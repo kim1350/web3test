@@ -80,18 +80,22 @@ export const DropdownWallet = memo(
             title={selectedOption?.title}
             currency={selectedOption?.currency}
             amount={selectedOption?.amount}
+            showArrow
             subtitle={open ? selectedOption?.address : undefined}
           />
-          {!open && (
-            <Animated.View
-              entering={FadeInLeft}
-              exiting={BadgeExit}
-              style={[styles.badgeWrapper]}
-            >
-              <AddressBadge value={selectedOption?.address ?? ""} />
-            </Animated.View>
-          )}
         </TouchableOpacity>
+        {!open && (
+          <Animated.View
+            entering={FadeInLeft}
+            style={{ marginHorizontal: 10, marginBottom: 10 }}
+            exiting={BadgeExit}
+          >
+            <PressableCustom pressedScale={0.98} pressedOpacity={0.8}>
+              <AddressBadge value={selectedOption?.address ?? ""} />
+            </PressableCustom>
+          </Animated.View>
+        )}
+
         <View
           style={[
             styles.separator,
