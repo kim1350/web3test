@@ -50,7 +50,6 @@ export const Transaction: React.FC<TransactionProps> = React.memo(
 const styles = StyleSheet.create({
   container: {
     paddingLeft: 5,
-    flex: 1,
     justifyContent: "space-between",
     flexDirection: "row",
     alignItems: "center",

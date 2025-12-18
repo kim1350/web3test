@@ -1,15 +1,8 @@
 import CopyIcon from "@/assets/icons/CopyIcon";
 import { useThemeColors } from "@/shared/hooks";
-import { ThemedText, ThemedView } from "@/shared/ui";
-import { GlassView } from "expo-glass-effect";
+import { PressableCustom, ThemedText, ThemedView } from "@/shared/ui";
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Clipboard,
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, Clipboard } from "react-native";
 
 type Props = {
   value: string;
@@ -27,7 +20,7 @@ export const AddressBadge: React.FC<Props> = ({ value }) => {
       style={[
         styles.container,
         {
-          borderColor: colors.foreground,
+          borderColor: colors.borderAddress,
           backgroundColor: colors.muted_foreground,
         },
       ]}
@@ -38,16 +31,15 @@ export const AddressBadge: React.FC<Props> = ({ value }) => {
         </ThemedText>
       </View>
 
-      <TouchableOpacity onPress={onCopy} style={styles.copyButton}>
+      <PressableCustom onPress={onCopy} style={styles.copyButton}>
         <CopyIcon fillColor={colors.foreground} />
-      </TouchableOpacity>
+      </PressableCustom>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    boxSizing: "border-box",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
