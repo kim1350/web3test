@@ -1,5 +1,11 @@
 import { StyleSheet, View } from "react-native";
-import React, { useMemo } from "react";
+import React, { useEffect } from "react";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  interpolate,
+} from "react-native-reanimated";
 import WalletIcon from "@/assets/icons/WalletIcon";
 import { useThemeColors } from "@/shared/hooks";
 import { PressableCustom, ThemedText } from "@/shared/ui";
@@ -7,33 +13,93 @@ import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
 
 interface TransactionProps {
   title?: string;
+  subtitle?: string | null;
   amount?: string | number;
   currency?: string;
   onPress?: () => void;
 }
 
 export const Transaction: React.FC<TransactionProps> = React.memo(
-  ({ title = "Wallet", amount = "532.00", currency = "USDT", onPress }) => {
+  ({
+    title = "Wallet",
+    subtitle,
+    amount = "532.00",
+    currency = "USDT",
+    onPress,
+  }) => {
     const colors = useThemeColors();
+    const progress = useSharedValue(subtitle ? 1 : 0);
+
+    const shortValue = subtitle
+      ? `${subtitle?.slice(0, 6)}...${subtitle?.slice(-4)}`
+      : null;
+    useEffect(() => {
+      progress.value = withTiming(subtitle ? 1 : 0, { duration: 200 });
+    }, [subtitle, progress]);
 
     return (
       <View style={styles.container}>
-        <View style={styles.row}>
+        <View style={styles.leftRow}>
           <View
             style={[styles.avatar, { backgroundColor: colors.primary_blue }]}
           >
             <WalletIcon />
           </View>
-          <ThemedText size={14} lineHeight={22} font="bold">
-            {title}
-          </ThemedText>
+          <View style={styles.titleWrap}>
+            <ThemedText
+              size={14}
+              lineHeight={22}
+              font="bold"
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {title}
+            </ThemedText>
+
+            <Animated.View
+              style={useAnimatedStyle(() => ({
+                opacity: progress.value,
+                transform: [
+                  {
+                    translateY: interpolate(progress.value, [0, 1], [-6, 0]),
+                  },
+                ],
+              }))}
+            >
+              {subtitle && (
+                <ThemedText
+                  size={12}
+                  lineHeight={18}
+                  font="medium"
+                  numberOfLines={1}
+                  ellipsizeMode="middle"
+                >
+                  {shortValue}
+                </ThemedText>
+              )}
+            </Animated.View>
+          </View>
         </View>
 
-        <View style={styles.row}>
-          <ThemedText size={14} lineHeight={22} font="bold">
+        <View style={styles.rightRow}>
+          <ThemedText
+            size={14}
+            lineHeight={22}
+            font="bold"
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={styles.amountText}
+          >
             {amount}
           </ThemedText>
-          <ThemedText size={14} lineHeight={22} font="medium">
+          <ThemedText
+            size={14}
+            lineHeight={22}
+            font="medium"
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={styles.currencyText}
+          >
             {currency}
           </ThemedText>
           <PressableCustom onPress={onPress}>
@@ -54,10 +120,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  row: {
+  leftRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+    flex: 1,
+    minWidth: 0,
+  },
+  titleWrap: {
+    flexDirection: "column",
+    flex: 1,
+    minWidth: 0,
+  },
+  rightRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginLeft: 8,
+    justifyContent: "flex-end",
+    minWidth: 0,
   },
   avatar: {
     width: 41,
@@ -73,5 +154,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 8,
+  },
+  amountText: {
+    maxWidth: 90,
+    textAlign: "right",
+  },
+  currencyText: {
+    maxWidth: 60,
   },
 });
