@@ -2,19 +2,19 @@ import { PixelRatio } from "react-native";
 
 export const fonts = {
   regular: {
-    fontFamily: "SF-Regular",
+    fontFamily: "Montserrat",
     fontWeight: "400",
   },
   medium: {
-    fontFamily: "SF-Medium",
+    fontFamily: "Montserrat",
     fontWeight: "500",
   },
   bold: {
-    fontFamily: "SF-Bold",
+    fontFamily: "Montserrat",
     fontWeight: "700",
   },
   heavy: {
-    fontFamily: "SF-Black",
+    fontFamily: "Montserrat",
     fontWeight: "900",
   },
 };
