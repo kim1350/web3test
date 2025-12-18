@@ -1,8 +1,8 @@
 import CopyIcon from "@/assets/icons/CopyIcon";
 import { useThemeColors } from "@/shared/hooks";
-import { PressableCustom, ThemedText, ThemedView } from "@/shared/ui";
+import { PressableCustom, ThemedText } from "@/shared/ui";
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Clipboard } from "react-native";
+import { View, StyleSheet, Clipboard } from "react-native";
 
 type Props = {
   value: string;
