@@ -10,9 +10,9 @@ export const SWIDTH = Dimensions.get("screen").width;
 
 export const SHEIGTH = Dimensions.get("screen").height;
 
-export const scaleW = SWIDTH / 960;
+export const scaleW = SWIDTH / 473;
 
-export const scaleH = SHEIGTH / 540;
+export const scaleH = SHEIGTH / 763;
 
 export function getScaledSize(
   value: number,

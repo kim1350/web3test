@@ -13,7 +13,7 @@ interface ThemedTextProps extends TextProps {
 export const ThemedText: FC<ThemedTextProps> = ({
   font = "regular",
   size = 16,
-  lineHeight = 24,
+  lineHeight,
   style,
   color = "foreground",
   ...props
