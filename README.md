@@ -4,6 +4,12 @@
 
 ---
 
+## Пример работы прилоежния
+
+https://drive.google.com/file/d/1uD8VQ6yNK03AA0NjDM1TtB6mm5eibbcc/view?usp=drive_link
+
+---
+
 ## Стек технологий
 
 - **Expo** `~54`
