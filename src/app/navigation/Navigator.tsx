@@ -12,7 +12,6 @@ const Navigation = createStaticNavigation(RootStack);
 
 export const Navigator = () => {
   const { theme } = useThemeContext();
-  // Use `useFonts` only if you can't use the config plugin.
   const [loaded, error] = useFonts({
     Montserrat: require("@assets/fonts/Montserrat-VariableFont.ttf"),
   });

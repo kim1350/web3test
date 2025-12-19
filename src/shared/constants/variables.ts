@@ -28,3 +28,27 @@ export const EXAMPLE_WALLETS = [
     value: "4",
   },
 ];
+
+export const EXAMPLE_TRANSACTIONS = [
+  {
+    id: "t1",
+    title: "Payment",
+    subtitle: "0xabc123...",
+    amount: "120.00",
+    currency: "USDT",
+  },
+  {
+    id: "t2",
+    title: "Refund",
+    subtitle: "0xdef456...",
+    amount: "-20.00",
+    currency: "USDT",
+  },
+  {
+    id: "t3",
+    title: "Swap",
+    subtitle: "0x789ghi...",
+    amount: "0.5",
+    currency: "ETH",
+  },
+];
